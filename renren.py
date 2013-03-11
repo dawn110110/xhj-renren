@@ -209,6 +209,19 @@ class RenRen:
         r.raise_for_status()
         return r.json()
 
+    def postStatus(self, status=''):
+        status = status or 'aaa'
+        info = self.getUserInfo()
+        url = "http://shell.renren.com/%d/status" % info['hostid']
+        payloads = {
+            'content': status,
+            'hostid': info['hostid'],
+            'requestToken': self.token['requestToken'],
+            '_rtk': self.token['_rtk'],
+            'channel': 'renren',
+            }
+        return self.sendComment(url, payloads)
+
     # 评论状态
     def addStatusComment(self, data):
         url = 'http://status.renren.com/feedcommentreply.do'
@@ -221,7 +234,7 @@ class RenRen:
             'c': data['message']
         }
 
-        if data.get('reply_id', None):
+        if data.get('reply_id',http://shell.renren.com/423210489/status None):
             payloads.update({
                 'rpLayer': 1,
                 'replyTo': data['author_id'],
