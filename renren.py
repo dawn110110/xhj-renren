@@ -234,7 +234,7 @@ class RenRen:
             'c': data['message']
         }
 
-        if data.get('reply_id',http://shell.renren.com/423210489/status None):
+        if data.get('reply_id', None):
             payloads.update({
                 'rpLayer': 1,
                 'replyTo': data['author_id'],
@@ -329,7 +329,6 @@ class RenRen:
 
 if __name__ == '__main__':
     renren = RenRen()
-    renren.login('email', 'password')
-    info = renren.getUserInfo()
-    print 'hello', info['hostname']
-    renren.visit(328748051)
+    renren.loginByCookie("dawn_renren_cookie.txt")
+    r = renren.postStatus("aaaaa")
+    print r
