@@ -329,6 +329,6 @@ class RenRen:
 
 if __name__ == '__main__':
     renren = RenRen()
-    renren.loginByCookie("dawn_renren_cookie.txt")
+    renren.loginByCookie("email","pass")
     r = renren.postStatus("aaaaa")
     print r
